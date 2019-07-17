@@ -46,6 +46,12 @@ class ScrollingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         listLayout.findViewById<TextView>(R.id.list_content).setText(listData.content)
         listsHolder.addView(listLayout)
 
+        val listData2 = OneList("lama", "lama", "lama", "12-12-1212 12:12")
+        val listLayout2: View = LayoutInflater.from(this).inflate(R.layout.list, null)
+        listLayout2.findViewById<TextView>(R.id.list_header).setText(listData2.name)
+        listLayout2.findViewById<TextView>(R.id.list_content).setText(listData2.content)
+        listsHolder.addView(listLayout2)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,10 +82,6 @@ class ScrollingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
             R.id.nav_lists -> {
                 val intent = Intent(this, ScrollingActivity::class.java)
                 startActivity(intent)

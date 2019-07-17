@@ -62,10 +62,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
             R.id.nav_lists -> {
                 val intent = Intent(this, ScrollingActivity::class.java)
                 startActivity(intent)
