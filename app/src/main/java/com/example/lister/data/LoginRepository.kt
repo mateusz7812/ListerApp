@@ -1,5 +1,7 @@
 package com.example.lister.data
 
+import com.example.lister.MyApplication
+import com.example.lister.PreferenceManager
 import com.example.lister.data.model.LoggedInUser
 
 /**
@@ -25,6 +27,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
     fun logout() {
         user = null
         dataSource.logout()
+        PreferenceManager(MyApplication.appContext!!).logoutAccount()
     }
 
     fun login(username: String, password: String): Result<LoggedInUser> {
@@ -33,6 +36,7 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)
+            PreferenceManager(MyApplication.appContext!!).loginAccount(result.data)
         }
 
         return result
